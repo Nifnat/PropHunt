@@ -29,7 +29,7 @@ function ENT:OnTakeDamage(dmg)
                
                 if self.health <= 0 then
                         pl:KillSilent()
-                       
+                        pl:RemoveProp()
                         if inflictor && inflictor == attacker && inflictor:IsPlayer() then
                                 inflictor = inflictor:GetActiveWeapon()
                                 if !inflictor || inflictor == NULL then inflictor = attacker end
@@ -50,7 +50,6 @@ function ENT:OnTakeDamage(dmg)
                         pl:AddDeaths(1)
                         attacker:SetHealth(math.Clamp(attacker:Health() + GetConVar("HUNTER_KILL_BONUS"):GetInt(), 1, 100))
                        
-                        pl:RemoveProp()
                 end
         end
 end
